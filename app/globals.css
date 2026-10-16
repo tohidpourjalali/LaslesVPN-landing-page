@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design tokens — extracted pixel-exact from the LaslesVPN design file
+   ========================================================================== */
+@theme {
+  /* Brand */
+  --color-primary: #f53838;
+  --color-primary-tint: #c42d2d;
+  --color-primary-shade: #f98888;
+  --color-primary-light: #ffecec;
+
+  /* Neutrals */
+  --color-ink: #0b132a;
+  --color-muted: #4f5665;
+  --color-faint: #afb5c0;
+  --color-line: #dddddd;
+  --color-line-soft: #eeeff2;
+  --color-surface: #f8f8f8;
+  --color-bullet: #dde0e4;
+
+  /* Accents */
+  --color-check: #2fab73;
+  --color-star: #fea250;
+
+  /* Radii */
+  --radius-card: 1rem;
+  --radius-pill: 5rem;
+
+  /* Elevation */
+  --shadow-main: 0 3.7rem 3.7rem -1rem rgba(245, 56, 56, 0.349);
+  --shadow-main-hover: 0 3.7rem 3.7rem -1rem #ffecec;
+  --shadow-card: 0 4.7rem 4.7rem -1rem rgba(13, 16, 37, 0.05);
+  --shadow-social: 0 0.7rem 0.7rem -0.1rem rgba(0, 0, 0, 0.05);
+
+  /* Breakpoints (em in media queries = browser default 16px) */
+  --breakpoint-sm: 27rem; /*  432px */
+  --breakpoint-md: 54rem; /*  864px */
+  --breakpoint-lg: 75rem; /* 1200px */
+
+  --font-sans: var(--font-rubik), "Rubik", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   Fluid root scale — 1rem = 9px on small screens, 10px from 864px up.
+   Every value below is authored in rem, so the whole layout scales as a unit.
+   ========================================================================== */
+html {
+  font-size: 56.25%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 54rem) {
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  line-height: 1.875;
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+/* Hide the carousel scrollbar without losing keyboard/touch scrolling */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.container-page {
+  width: 100%;
+  max-width: 114rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+/* From 1200px up the design uses the full 1140px with no side gutter. */
+@media (min-width: 75rem) {
+  .container-page {
+    padding-inline: 0;
+  }
+}
+
+/* Align the carousel's first slide with the page container, then let it bleed
+   past the right edge exactly like the design. */
+.carousel-inset {
+  padding-inline-start: max(2.4rem, calc((100vw - 114rem) / 2));
+  scroll-padding-inline-start: max(2.4rem, calc((100vw - 114rem) / 2));
+}
